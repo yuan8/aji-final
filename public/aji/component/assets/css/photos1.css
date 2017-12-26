@@ -1,0 +1,229 @@
+
+
+.margin30 {
+    margin-bottom: 30px;
+}
+
+.item-img-wrap {
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+}
+
+.item-img-wrap img {
+    -moz-transition: all 200ms linear;
+    -o-transition: all 200ms linear;
+    -webkit-transition: all 200ms linear;
+    transition: all 200ms linear;
+    width: 100%;
+}
+
+/************************image hover effect*******************/
+.item-img-wrap {
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+}
+
+.item-img-wrap img {
+  -moz-transition: all 200ms linear;
+  -o-transition: all 200ms linear;
+  -webkit-transition: all 200ms linear;
+  transition: all 200ms linear;
+  width: 100%;
+}
+
+.item-img-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+
+.item-img-overlay span {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.7);
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
+  opacity: 0;
+  -moz-transition: opacity 250ms linear;
+  -o-transition: opacity 250ms linear;
+  -webkit-transition: opacity 250ms linear;
+  transition: opacity 250ms linear;
+}
+
+.item-img-wrap:hover .item-img-overlay span,
+.item-img-wrap:hover .item-img-overlay .nav {
+  opacity: 1;
+}
+
+.item-img-wrap:hover img {
+  -moz-transform: scale(1.1);
+  -o-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+.photoContainer {
+  position: relative;
+  display: block;
+  background-color: #fff;
+  padding-bottom: 4px;
+  margin-bottom: 20px;
+  border-radius: 2px; 
+  box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+}
+
+.albumContainer {
+
+}
+
+.photoHeader {
+  position: relative;
+  display: block;
+  padding: 12px 12px 12px;
+  border-bottom: 1px solid #eee;
+  background-color: #f6f7f9;
+}
+.photoHeader h4 {
+  display: inline;
+}
+.photoMenu {
+  float: right;
+}
+.griPhoto {
+  position: relative;
+  display: flow-root;
+}
+.griPhoto .grid{
+  position: relative;
+  width: 25%;
+  height: 225px;
+  padding: 4px 4px 4px 0;
+  vertical-align: top;
+  float: left;
+  overflow: hidden;
+  background-color: #fff;
+}
+.griPhoto .grid:first-child{
+  padding-left: 4px;
+}
+.griPhoto .grid:nth-of-type(4n+1){
+  padding-left: 4px;
+}
+.griPhoto .grid .item-img-wrap {
+  display: block;
+  height: 225px;
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.griPhoto .grid .nav {
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+
+}
+.griPhoto .grid .nav>li> a{
+  color: #fff;
+  padding: 5px 8px;
+}
+
+.albumContainer .griPhoto .grid{
+  height: 280px;
+}
+.albumContainer #griPhoto .grid .item-img-wrap {
+  border: 1px solid #d2d2d2;
+  border-bottom: none;
+}
+.albumContainer #griPhoto .grid.gridAdd .item-img-wrap {
+  border: 0px solid #d2d2d2;
+  height: 275px;
+}
+.albumContainer .griPhoto .grid .albumDesc {
+  padding: 4px 8px;
+  border: 1px solid #d2d2d2;
+}
+.albumContainer .griPhoto .grid .albumDesc textarea{
+  padding: 2px;
+  resize: none;
+  height: 40px;
+}
+.albumContainer .griPhoto .grid .albumDesc .albumName {
+  color: #08c;
+}
+.photoMenuTabs {
+  position: relative;
+  display: inline-block;
+  margin-left: 10px;
+  border-left: 1px solid #999;
+}
+.photoMenuTabs a{
+  position: relative;
+  color: #08c;
+  font-weight: bold;
+  padding: 4px 10px;
+}
+.photoMenuTabs a.active{
+  color: #000;
+}
+.photoMenuTabs a.active:after{
+  position: absolute;
+  content: '';
+  margin-left: -10px;
+  left: 50%;
+  bottom: -18px;
+  width: 14px;
+  height: 14px;
+  border-color: transparent;
+  border-bottom: 1px solid #eee;
+  border-left: 1px solid #eee;
+  background-color: #fff;
+  -webkit-transform: rotate(135deg);
+     -moz-transform: rotate(135deg);
+          transform: rotate(135deg);
+}
+.albumDetailHeader {
+  padding: 10px;
+}
+
+/*************pagination***********/
+.gallery-bottom .pagination {
+  margin-top: 0px;
+}
+
+.pagination > li > a, .pagination > li > span {
+  background-color: #ccc;
+  padding: 3px 9px;
+  color: #08c;
+  border: 0px;
+  background: none;
+  border: 1px solid #d2d2d2;
+}
+
+.pagination > li > a {
+  margin-right: 5px;
+}
+
+.pagination > .active > a, 
+.pagination > .active > span, 
+.pagination > .active > a:hover, 
+.pagination > .active > span:hover, 
+.pagination > .active > a:focus, 
+.pagination > .active > span:focus {
+  background: none;
+  border: none;
+  color: #999;
+}
+
+
+
+

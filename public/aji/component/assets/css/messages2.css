@@ -1,0 +1,300 @@
+
+#messages-main {
+    position: relative;
+    margin: 0 auto;
+    /* box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12); */
+}
+#messages-main:after, #messages-main:before {
+    content: " ";
+    display: table;
+}
+#messages-main .ms-menu {
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-right: 1px solid #eee;
+    padding-bottom: 50px;
+    height: 100%;
+    width: 300px;
+    background: #fff;
+}
+@media (min-width:768px) {
+    #messages-main .ms-body {
+    padding-left: 300px;
+}
+}@media (max-width:767px) {
+    #messages-main .ms-menu {
+    height: calc(100% - 58px);
+    display: none;
+    z-index: 1;
+    top: 58px;
+}
+#messages-main .ms-menu.toggled {
+    display: block;
+}
+#messages-main .ms-body {
+    overflow: hidden;
+}
+}
+#messages-main .ms-user {
+    padding: 18px 20px 19px;
+    background: #f8f8f8;
+}
+#messages-main .ms-user>div {
+    overflow: hidden;
+    padding: 3px 5px 0 15px;
+    font-size: 11px;
+}
+#messages-main #ms-compose {
+    position: fixed;
+    bottom: 120px;
+    z-index: 1;
+    right: 30px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, .14), 0 4px 8px rgba(0, 0, 0, .28);
+}
+#ms-menu-trigger {
+    user-select: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 50px;
+    height: 100%;
+    padding-right: 10px;
+    padding-top: 19px;
+}
+#ms-menu-trigger i {
+    font-size: 21px;
+}
+#ms-menu-trigger.toggled i:before {
+    content: '\f2ea'
+}
+.fc-toolbar:before, .login-content:after {
+    content: ""
+}
+.message-feed {
+    padding: 20px;
+    
+}
+
+#footer, .fc-toolbar .ui-button, .fileinput .thumbnail, 
+.four-zero, .four-zero footer>a, 
+.ie-warning, .login-content, .login-navigation, 
+.pt-inner, .pt-inner .pti-footer>a {
+    text-align: center;
+}
+.message-feed.right>.pull-right {
+    margin-left: 15px;
+}
+.message-feed:not(.right) .mf-content {
+    background: #fff;
+    color: #555;
+    border: 1px solid #eee;
+    /* box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12); */
+}
+.message-feed.right .mf-content {
+    background: #eee;
+}
+.mf-content {
+    padding: 12px 17px 13px;
+    border-radius: 2px;
+    display: inline-block;
+    max-width: 80%;
+    position: relative;
+}
+.mf-date {
+    display: block;
+    color: #B3B3B3;
+    margin-top: 7px;
+}
+.mf-date>i {
+    font-size: 14px;
+    line-height: 100%;
+    position: relative;
+    top: 1px;
+}
+.msb-reply {
+    box-shadow: 0 -20px 20px -5px #fff;
+    position: relative;
+    margin-top: 0px;
+    border-top: 1px solid #eee;
+    background: #f8f8f8;
+    padding: 0;
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 60px;
+}
+.four-zero, .lc-block {
+    box-shadow: 0 1px 11px rgba(0, 0, 0, .27);
+}
+.msb-reply textarea {
+    width: 80%;
+    position: absolute;
+    font-size: 13px;
+    border: 0;
+    padding: 5px 10px;
+    resize: none;
+    left: 10px;
+    right: 0;
+    top: 10px;
+    bottom: 10px;
+    background: #fff;
+}
+.msb-reply button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: 0;
+    height: 100%;
+    width: 60px;
+    font-size: 20px;
+    color: #591f62;
+    outline: none;
+    border: none;
+    background-color: #fff;
+}
+.msb-reply button:hover {
+    background: #f2f2f2;
+}
+.img-avatar {
+    height: 37px;
+    border-radius: 2px;
+    width: 37px;
+}
+.list-group.lg-alt .list-group-item {
+    border: 0;
+}
+.p-15 {
+    padding: 15px!important;
+}
+.btn:not(.btn-alt) {
+    border: 0;
+}
+.action-header {
+    position: relative;
+    background: #f8f8f8;
+    padding: 15px 13px 15px 17px;
+}
+.ah-actions {
+    z-index: 3;
+    float: right;
+    margin-top: 7px;
+    position: relative;
+}
+.actions {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0 0;
+}
+.actions>li {
+    display: inline-block;
+}
+
+.actions:not(.a-alt)>li>a>i {
+    color: #939393;
+}
+.actions>li>a>i {
+    font-size: 20px;
+}
+.actions>li>a {
+    display: block;
+    padding: 0 10px;
+}
+.ms-body{
+    background:#fff;    
+}
+#ms-menu-trigger {
+    user-select: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 50px;
+    height: 100%;
+    padding-right: 10px;
+    padding-top: 19px;
+    cursor:pointer;
+}
+#ms-menu-trigger, .message-feed.right {
+    text-align: right;
+}
+#ms-menu-trigger, .toggle-switch {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+}
+.nav-tabs.nav-tabs-messages>li {
+    width: 50%;
+    text-align: center;
+}
+.nav-tabs.nav-tabs-messages>li.active>a, 
+.nav-tabs.nav-tabs-messages>li.active>a:focus, 
+.nav-tabs.nav-tabs-messages>li.active>a:hover {
+    color: #570061;
+    cursor: default;
+    background-color: #fff;
+    border: none;
+    border-top: 1px solid #fff;
+    border-bottom-color: transparent;
+    border-bottom: 3px solid #570061;
+}
+.chatOption {
+    position: absolute;
+    right: -10px;
+    top: -10px;
+}
+.message-feed.right .chatOption {
+    left: -10px;
+    right: unset;
+}
+.message-feed.right .chatOption .dropdown-menu {
+    right: unset;
+    left: 0;
+}
+.message-feed .chatOption .nav>li>a {
+    color: #ccc;
+}
+.chatReply button + button {
+    right: 60px;
+}
+.headMesssageTitle {
+    display: inline-block;
+    color: #5a2063;
+    margin-left: 10px;
+}
+.headMesssageTitle span{
+    color: #999;
+}
+a.list-group-item .list-group-item-heading, button.list-group-item .list-group-item-heading {
+    color: #570061;
+}
+.list-group-item .fa {
+    font-size: 20px;
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    padding-top: 10px;
+    text-align: center;
+    background-color: #ccc;
+    border-radius: 50%;
+}
+.chatReply {
+    position: relative;
+}
+.chatReply #files{
+    display: none;
+}
+.chatReply #listUploadImagesPost {
+    position: relative;
+    bottom: 0px;
+    z-index: 10;
+    position: absolute;
+    bottom: 58px;
+    /* right: 0; */
+    background-color: rgb(248, 248, 248);
+}
+.chatReply #listUploadImagesPost span {
+    height: 40px;
+    width: 66px;
+    margin-bottom: 0;
+}
+
+

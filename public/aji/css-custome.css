@@ -1,0 +1,32 @@
+.slider-in-post .bx-wrapper{
+	background: transparent;
+	box-shadow: none;
+	border: none;
+	margin-bottom: 0px;
+}
+
+a.more:hover{
+	color: #570061 !important;
+}
+
+
+.slider-in-post .bx-pager.bx-default-pager{
+	bottom: 10px;
+}
+
+.slider-in-post .bx-pager.bx-default-pager .bx-pager-item .bx-pager-link{
+	background:  transparent !important;
+	border: 1px solid #fff; 
+
+}
+
+.slider-in-post .bx-pager.bx-default-pager .bx-pager-item .bx-pager-link.active{
+	background:  #570061 !important;
+	border: none; 
+
+
+}
+
+.likedComment .fa.fa-heart-o{
+	color: #777;
+}
