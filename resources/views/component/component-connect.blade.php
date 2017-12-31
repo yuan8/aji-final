@@ -20,6 +20,28 @@
 		return settings;
 	}
 
+
+	function PostConnect(url,data){
+		var settings = {
+			"async": true,
+			"crossDomain": true,
+			"url": url,
+			"method": "POST",
+			"headers": {
+				"cache-control": "no-cache",
+				"authorization": "Bearer {{Auth::user()->api_token}}",
+			},
+			 "processData": false,
+			 "contentType": false,
+			 "mimeType": "multipart/form-data",
+			 "data": data
+		}
+
+		return settings;
+	}
+
+
+
 	@if(Auth::user()->profile_photo!='')
 	var URL_AVATAR_USER="{{url(Auth::user()->profile_photo)}}";
 	@else
@@ -39,6 +61,9 @@
 					<a href="{{url('/user/'.Auth::user()->id.'/show/timeline')}}">USER_NAME</a>
 					<a href="#"><span class="text-muted pull-right">x</span></a>
 				</span>
+				<div class="row">
+					<img src="IMAGE_URL" class="img-responsive image-comment" style="width: 50% !important; height: auto !important; margin-top: 20px;">
+				</div>
 				<p style="padding-right: 20px;" id="">
 					COMMENT_CONTENT
 				</p>
@@ -82,3 +107,14 @@
 	</div>
 
 </div>
+
+
+
+<output id="dom-file-list-comment" style="display: none;">
+   
+    <span>
+      <img class="thumbPreviewImagePost" src="IMAGE_URL" alt="">
+      <a class="deleteImageComment" target="#comment-post-POST_ID">x</a>
+    </span>
+
+  </output>

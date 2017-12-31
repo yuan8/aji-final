@@ -54,8 +54,6 @@ class SettingAboutController extends Controller
 
     		}
 
-    		
-
     		$res=$setting->save();
     		if($res){
     			return array(

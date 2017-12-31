@@ -18,6 +18,8 @@ class PostComments extends Model
 		'post_id',
 		'content',
 		'status',
+		'image_url',
+		'thumbnail',
 		'updated_at',
 		'created_at'
 	];

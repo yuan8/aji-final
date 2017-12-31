@@ -16,6 +16,6 @@ class EventReservation extends Model
     }
 
      public function FromUser(){
-    	return $this->belongsTo(Event::class,'user_id');
+    	return $this->belongsTo(User::class,'user_id');
     }
 }

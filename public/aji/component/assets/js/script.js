@@ -262,9 +262,7 @@ $('.replyComment, .replyCommentCount').click(function(){
 	// }
 });
 
-$('.btnReplyImage').click(function() {
-	$(this).parent().find('.filesReply').trigger('click');
-});
+// ;
 
 
 // Sticky sidebar function

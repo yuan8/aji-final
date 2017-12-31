@@ -16,9 +16,6 @@
 
 @section('content')
 
-
-
-
 <!-- Begin page content -->
 <div class="container page-content" data-sticky-parent>
 
@@ -61,7 +58,6 @@
                             <option value="{{Auth::user()->FromCity->id}}" >Kota {{Auth::user()->FromCity->name}} 
                             </option>
                             
-
                           </select>
                         </li>
                       </ul>
@@ -388,6 +384,19 @@
         @endforeach
 
 
+       @if($posts->nextPageUrl()!=null)
+       <div class="col-md-12 text-center">
+         <a href="{{url()->current()}}?p={{($page+1)}}" class="btn btn-azure col-md-4 " style="position: absolute; margin: auto; left:0; right: 0;">
+           Load More
+        </a>
+
+       </div>
+       @endif
+
+
+
+
+
 
 
       </div>
@@ -591,6 +600,8 @@
                         </div>
                       </div>
                     </div>
+
+
 
 
 

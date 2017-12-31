@@ -17,13 +17,26 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($sorting,$id_city=null,$city=null)
+    public function index(Request $request,$sorting,$id_city=null,$city=null)
     {
         //
 
+        $paginate=0;
+        $paginate_count=3;
+        if($request->p==null){
+            $paginate=$paginate_count;
+            $p=1;
+        }else{
+            $paginate=$paginate_count*$request->p;
+            $p=$request->p;
+        }
+
+
 
         if((!$sorting)){
-            return redirect('home/terkini/'.Auth::user()->FromCity->id.'/'.Auth::user()->FromCity->name);
+            // return redirect('home/terkini/'.Auth::user()->FromCity->id.'/'.Auth::user()->FromCity->name);
+
+            return redirect('home/terkini/0/national');
         }
 
         if(($id_city==0)AND(!$city)){
@@ -35,6 +48,7 @@ class HomeController extends Controller
                 return redirect('home/'.$sorting.'/'.$id_city.'/'.$city->name);
             }
         }
+
 
         if((!$id_city)AND($id_city!=0)){
             return redirect('home/terkini/'.Auth::user()->FromCity->id.'/'.Auth::user()->FromCity->name);
@@ -54,7 +68,9 @@ class HomeController extends Controller
                 ->withCount(['HavePostLikes as me_like'=>function($query){
                     $query->where('user_id',Auth::user()->id);
                 },'HavePostLikes as like','HavePostComments as comment'])
-                ->paginate(10); 
+                ->paginate($paginate); 
+
+
             }else{
 
                 $posts=Posts::Where('kanal','national')
@@ -62,7 +78,7 @@ class HomeController extends Controller
                 ->withCount(['HavePostLikes as me_like'=>function($query){
                     $query->where('user_id',Auth::user()->id);
                 },'HavePostLikes as like','HavePostComments as comment'])
-                ->paginate(10); 
+                ->paginate($paginate); 
 
             }
 
@@ -79,7 +95,7 @@ class HomeController extends Controller
                     },'HavePostLikes as like','HavePostComments as comment'])
                 ->orderBy('like_count','DESC')
 
-                ->paginate(10); 
+                ->paginate($paginate); 
             }else{
                 $posts=Posts::where('kanal','national')
                 ->withCount(
@@ -88,7 +104,7 @@ class HomeController extends Controller
                     },'HavePostLikes as like','HavePostComments as comment'])
                 ->orderBy('like_count','DESC')
 
-                ->paginate(10); 
+                ->paginate($paginate); 
             }
 
 
@@ -102,7 +118,7 @@ class HomeController extends Controller
                     ['HavePostLikes as me_like'=>function($query){
                         $query->where('user_id',Auth::user()->id);
                     },'HavePostComments as comment','HavePostLikes as like'])
-                ->paginate(10); 
+                ->paginate($paginate); 
 
             }else{
                 $posts=Posts::Where('kanal','national')
@@ -111,7 +127,7 @@ class HomeController extends Controller
                     ['HavePostLikes as me_like'=>function($query){
                         $query->where('user_id',Auth::user()->id);
                     },'HavePostComments as comment','HavePostLikes as like'])
-                ->paginate(10); 
+                ->paginate($paginate); 
             }
 
         }else{
@@ -138,6 +154,7 @@ class HomeController extends Controller
             ->with('select_city',$id_city)
             ->with('posts',$posts)
             ->with('events',$events)
+            ->with('page',$p)
 
             ->with('post_sorting',$sorting);
         }else{
@@ -150,7 +167,7 @@ class HomeController extends Controller
             ->with('select_city',$id_city)
             ->with('posts',$posts)
             ->with('events',$events)
-
+            ->with('page',$p)
             ->with('post_sorting',$sorting);
         }
 

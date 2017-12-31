@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API\v1;
 
-use App\PostLikes;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-use Validator;
-use App\PostComments;
+use App\EventReservation;
+use App\Event;
 use Auth;
-class PostLikesController extends Controller
+
+class EventReservationCtrl extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,6 +19,31 @@ class PostLikesController extends Controller
     public function index()
     {
         //
+
+        $event=Event::withCount([
+            'MeReserved',
+            'HaveEventReservations as peopleApprovedReservation'=>function($q){
+               return  $q->where('is_approved',1);
+            }
+        ])
+        ->with(['MeReservedStatus'])
+        ->whereHas('MeReserved')
+        ->paginate(env('API_PAGINATE'));
+
+
+        $custom = collect(
+            [
+                'code' =>(int)env('API_CODE_SUCCESS'),
+                'message'=>'success get all event reservation log'
+            ]
+        );
+        $event = $custom->merge($event);
+
+
+
+        return $event;
+
+
     }
 
     /**
@@ -44,10 +70,10 @@ class PostLikesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\PostLikes  $postLikes
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(PostLikes $postLikes)
+    public function show($id)
     {
         //
     }
@@ -55,10 +81,10 @@ class PostLikesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\PostLikes  $postLikes
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(PostLikes $postLikes)
+    public function edit($id)
     {
         //
     }
@@ -67,10 +93,10 @@ class PostLikesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\PostLikes  $postLikes
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, PostLikes $postLikes)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -78,10 +104,10 @@ class PostLikesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\PostLikes  $postLikes
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(PostLikes $postLikes)
+    public function destroy($id)
     {
         //
     }

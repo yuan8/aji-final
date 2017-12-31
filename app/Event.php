@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\EventReservation;
-
+use Auth;
 class Event extends Model
 {
     //
@@ -14,8 +14,18 @@ class Event extends Model
 	public function HaveEventReservations(){
 	    return $this->hasMany(EventReservation::class,'event_id');
 	}
-	
 
+
+	public function MeReserved(){
+	    return $this->hasMany(EventReservation::class,'event_id')->where('user_id',Auth::user()->id);
+	}
+
+
+	public function MeReservedStatus(){
+	    return $this->hasMany(EventReservation::class,'event_id')->where('user_id',Auth::user()->id);
+	}
+
+	
 
     
 }

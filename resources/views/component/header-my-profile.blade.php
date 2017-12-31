@@ -15,7 +15,6 @@
                     <i class="fa fa-camera"></i> Change Cover
                   </a>
                 </div>
-
         @endif
 
       </div>

@@ -8,11 +8,19 @@ var API_V="/api/v1/";
 
 function likePostEvent(post_id,url){
 
-  var setting=theComponentConnect(url+post_id,null);
+  var url=URL_THIS+API_V+'post-like';
+
+  var formData = new FormData();
+  formData.append('post_id',post_id);
+  data=formData;
+
+  var setting=PostConnect(url,data);
 
   $.ajax(setting).done(function (response) {
+
     var likeCount=parseInt( $('#count-like-post-'+post_id).html());
-    console.log(response.data.code);
+    var response=JSON.parse(response);
+
     if(response.code==200){
       if(response.data.like){
         likeCount=likeCount+1;
@@ -41,23 +49,32 @@ function commentPostPublishEvent(post_id){
  
   var Theme=$('#dom-comment-post').html();
 
-
   $('#spining-send-comment-post-'+post_id).css('display','block');
   $('#btn-send-comment-post-'+post_id).css('display','none');
-  var url=URL_THIS+API_V+"post/"+post_id+"/comment/add/";
-
-  var data={
-    content:$('#input-content-comment-post-'+post_id).val()
+  var url=URL_THIS+API_V+"comment";
+ 
+  if($('#image-embed-'+post_id)[0].files[0]){
+    $file=$('#image-embed-'+post_id)[0].files[0];
+  }else{
+    $file=null;
   }
+  var formData = new FormData();
+  formData.append('content',$('#input-content-comment-post-'+post_id).val()+"");
+  formData.append('post_id',post_id);
+  formData.append('comment_image', $file); 
+  data=formData;
 
-  data=(JSON.stringify(data));
 
-  var setting=theComponentConnect(url,data);
+  var setting=PostConnect(url,data);
 
 
   $.ajax(setting).done(function (response) {
+    var response=JSON.parse(response);
+    console.log(response);
     if(response.code==200){
-      $('#input-content-comment-post-'+post_id).val('')
+
+
+      $('#input-content-comment-post-'+post_id).val('');
 
         var dom=Theme;
         dom=dom.replace(/COMMENT_CONTENT/g,response.data.content);
@@ -67,17 +84,28 @@ function commentPostPublishEvent(post_id){
         dom=dom.replace(/COMMENT_TIME/g,'1 seconds ago');
         dom=dom.replace(/URL_AVATAR/g,URL_AVATAR_USER);
         dom=dom.replace(/COMMENT_ID/g,response.data.id);
+        if(response.data.image_url!=null){
+        dom=dom.replace(/IMAGE_URL/g,response.data.thumbnail);
 
+        }else{
+        dom=dom.replace(/IMAGE_URL/g,'#');
 
-
+        }
 
         var count=parseInt($('#count-comment-post-'+post_id).html())+1;
         $('#count-comment-post-'+post_id).html(count);
-
         $('#comment-place-post-'+post_id).append(dom);
         $('#spining-send-comment-post-'+post_id).css('display','none');
         $('#btn-send-comment-post-'+post_id).css('display','block');
+
+
         showReplayCommentEventListener();
+
+    }else if(response.code==500){
+
+        $('#spining-send-comment-post-'+post_id).css('display','none');
+        $('#btn-send-comment-post-'+post_id).css('display','block');
+        
     }
 
 
@@ -157,5 +185,19 @@ function settingAboutEvent(setting){
 
 }
 
+function triggerCommentImg(){
 
+  $('.btnReplyImage').click(function() {
+   $(this).parent().find('.filesReply').trigger('click');
+    });
+  
+
+  $('.filesReply').change(function(){
+
+    
+  });
+
+}
+
+triggerCommentImg();
 

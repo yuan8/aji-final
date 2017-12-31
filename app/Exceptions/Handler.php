@@ -86,7 +86,7 @@ class Handler extends ExceptionHandler
         //     return response()->json(['error' => 'Unauthenticated.'], 401);
         // }
 
-          $isapi = false;
+        $isapi = false;
         if (strpos($request->getUri(), '/api/') !== false) {
             $isapi = true;
         }

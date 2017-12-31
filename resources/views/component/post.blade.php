@@ -135,6 +135,13 @@
             <a href="{{url('user/'.$comment->FromUser->id.'/show/timeline')}}">{{$comment->FromUser->name}}</a>
             <a href="#"><span class="text-muted pull-right">x</span></a>
           </span>
+          
+          @if($comment->image_url)
+            <div class="row">
+              <img src="{{url($comment->image_url)}}" class="img-responsive image-comment" style="width: 50% !important; height: auto !important; margin-top: 20px;">
+            </div>
+            
+          @endif
 
           <p style="padding-right: 20px;" id="comment-content-preview-{{$comment->id}}">
 
@@ -143,6 +150,7 @@
             <a id="content-post-{{$post->id}}" class="more" onclick="moreContentComment({{$comment->id}})"   style="color: #777; font-size: 14px; font-weight: bold;" > . . . More</a>
             @endif
           </p>
+
           <p style="padding-right:20px; display: none;" id="comment-content-full-{{$comment->id}}">{{$comment->content}}</p>
 
 
@@ -174,6 +182,9 @@
                         <a href="{{url('/user/'.$replay->FromUser->id.'/show/timeline')}}">{{$replay->FromUser->username}}</a>
                         <a href=""><span class="text-muted pull-right">x</span></a>
                       </span>
+
+
+
                       {{$replay->content}}
                       <div class="actionFooterPost">
                         <span class="text-muted">{{TimeG::gTime($replay->created_at)}}</span>
@@ -227,20 +238,29 @@
        @endif
        <div class="img-push">
         <div class="textAreaReply">
-          <textarea name="" id="input-content-comment-post-{{$post->id}}" class="form-control input-sm writeComment" placeholder="Write a comment.."></textarea>
-          <div class="buttonPostReply" style="display: none;" id="spining-send-comment-post-{{$post->id}}">
-           <button class="btn " style="" ><i class="fa fa-spinner fa-spin" ></i>
-           </button>
-         </div>
-         <div class="buttonPostReply" id="btn-send-comment-post-{{$post->id}}">
-          <button class="btn btnReplyImage"><span class="fa fa-camera"></span></button>
-          <button class="btn" onclick="commentPostPublishEvent({{$post->id}})" ><span class="fa fa-paper-plane-o"></span>
-          </button>
-          <input type="file" name="fileReply" class="filesReply">
+          <div class="previewImageThumb">
+           <output id="file-list-comment">
+
+            <span>
+              <img class="thumbPreviewImagePost" src="{{asset(Auth::user()->profile_photo)}}" alt="">
+              <a class="deleteImageComment">x</a>
+            </span>
+          </output>
         </div>
+        <textarea name="" id="input-content-comment-post-{{$post->id}}" class="form-control input-sm writeComment" placeholder="Write a comment.."></textarea>
+        <div class="buttonPostReply" style="display: none;" id="spining-send-comment-post-{{$post->id}}">
+         <button class="btn " style="" ><i class="fa fa-spinner fa-spin" ></i>
+         </button>
+       </div>
+       <div class="buttonPostReply" id="btn-send-comment-post-{{$post->id}}">
+        <button class="btn btnReplyImage"  target="#image-embed-{{$post->id}}"><span class="fa fa-camera"></span></button>
+        <button class="btn" onclick="commentPostPublishEvent({{$post->id}})" ><span class="fa fa-paper-plane-o"></span>
+        </button>
+        <input type="file" name="fileReply" id="image-embed-{{$post->id}}" class="filesReply" accept="image/*">
       </div>
     </div>
   </div>
+</div>
 </div><!-- end post -->
 
 
@@ -310,7 +330,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">{{$post->like_count}}</span> likes</h4>
+        <h4 class="modal-title">{{$post->like_count}}</span> likes</h4>
         
       </div>
       <div class="modal-body">

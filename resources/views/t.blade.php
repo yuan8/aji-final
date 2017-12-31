@@ -9,7 +9,6 @@
 <!-- Begin page content -->
 <div class="row page-content">
   <div class="col-md-8 col-md-offset-2">
-
   </div>
 </div>
 

@@ -49,7 +49,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token','is_actived'
+        'password', 'remember_token','is_actived','api_token'
     ];
 
     public function FromCity(){

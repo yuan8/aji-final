@@ -58,6 +58,10 @@ class Posts extends Model
 	}
 
 
+	public function LikesBy(){
+		return $this->hasMany(PostLikes::class,'post_id','id');
+	}
+
 
 
 }

@@ -7,12 +7,28 @@ use App\Http\Controllers\Controller;
 use App\PostLikes;
 use App\PostComments;
 use Auth;
+use Validator;
+
 
 class PostController extends Controller
 {
     //
 
     public function likePost($post_id,Request $request){
+
+        $validator = Validator::make($request->all(), [
+             'post_id' => 'required|numeric',
+         ]);
+
+        if ($validator->fails()) {
+           return array(
+             'code'=>500,
+             'message'=>'error validation data request',
+             'data'=>$validator->messages(),
+           );
+        }
+
+
     	$like=PostLikes::where('post_id',$post_id)
     			->where('user_id',Auth::user()->id)
     			->first();
@@ -40,9 +56,8 @@ class PostController extends Controller
     			return array(
     					'code'=>200,
     					'data'=>array('like'=>true,'data'=>$like),
-    					'message'=>'liked',
-
-    				);
+    					'message'=>'liked'
+    			);
     		}
     	}
 
@@ -53,28 +68,7 @@ class PostController extends Controller
 
     public function commentPost(Request $request, $post_id){
 
-        $comment=PostComments::create([
-            'post_id'=>$post_id,
-            'content'=>$request->content,
-            'user_id'=>Auth::user()->id,
-            'status'=>1
-
-        ]);
-
-        if($comment){
-            return array(
-                'code'=>200,
-                'data'=>PostComments::where('id',$comment->id)->with('FromUser')->first(),
-                'message'=>"success add comment"
-            );
-        }else{
-            return array(
-                'code'=>500,
-                'data'=>$comment->with('FromUser'),
-                'message'=>"can't add comment"
-            );
-
-        }
+        
 
 
     }
