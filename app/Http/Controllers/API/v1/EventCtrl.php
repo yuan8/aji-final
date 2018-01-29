@@ -61,6 +61,9 @@ class EventCtrl extends Controller
     public function store(Request $request)
     {
         //
+
+
+        
     }
 
     /**

@@ -8,6 +8,8 @@ use App\Http\Controllers\Controller;
 use App\EventReservation;
 use App\Event;
 use Auth;
+use Validator;
+
 
 class EventReservationCtrl extends Controller
 {
@@ -62,9 +64,43 @@ class EventReservationCtrl extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store($id,Request $request)
     {
         //
+        
+        $reservation=EventReservation::where('user_id',Auth::user()->id)->where('event_id',$id)->first();
+
+        if($reservation){
+            
+            return array(
+                'code'=>env('API_CODE_ERR'),
+                'message'=>'cant create double reservation',
+                'data'=>null
+            );
+
+        }else{
+            $reservation=EventReservation::create(
+                [
+                    'event_id'=>$id,
+                    'user_id'=>Auth::user()->id
+                ]
+            );
+
+            $event=Event::withCount(
+            [
+                    'MeReserved',
+                    'HaveEventReservations as peopleApprovedReservation'
+            ])->where('id',$id)->first();
+
+            return array(
+                'code'=>env('API_CODE_SUCCESS'),
+                'message'=>'success reservation event',
+                'data'=>$event
+            );
+
+
+        }
+
     }
 
     /**

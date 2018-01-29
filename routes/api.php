@@ -28,18 +28,23 @@ Route::middleware(['auth:api'])->prefix('v1')->group(function () {
 	
 	Route::post('post-like','API\v1\PostLikeCtrl@store');
 
-	Route::post('comment','API\v1\PostCommentCtrl@store');
+	Route::resource('comment','API\v1\PostCommentCtrl');
+	Route::resource('replay-comment','API\v1\PostReplayCommentCtrl');
+
 
 	Route::post('setting-about','API\v1\SettingAboutController@setting');
 
+	Route::post('profile/avatar','API\v1\UserCtrl@avatar');
+	Route::post('tag','API\v1\UserCtrl@tag');
+
 	Route::resource('profile','API\v1\UserCtrl');
 
+	Route::post('event/{id}/reservation','API\v1\EventReservationCtrl@store');
 	Route::get('event-reservation','API\v1\EventReservationCtrl@index');
 
-
 	Route::resource('event','API\v1\EventCtrl');
-
 	Route::resource('post','API\v1\PostCtrl');
+
 
 	Route::get('my-post','API\v1\MyPostCtrl@index');
 

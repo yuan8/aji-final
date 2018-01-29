@@ -87,6 +87,10 @@ class User extends Authenticatable
     }
     
 
+    public function active(){
+        return $this->where('is_active',1);
+    }
+
 
 
 

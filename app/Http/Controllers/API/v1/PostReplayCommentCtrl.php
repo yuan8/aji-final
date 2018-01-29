@@ -5,8 +5,11 @@ namespace App\Http\Controllers\Api\v1;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Validator;
-use App\PostComments;
+use App\ReplayCommentPost;
 use App\Post;
+use Auth;
+use Illuminate\Support\Facades\Storage;
+
 class PostReplayCommentCtrl extends Controller
 {
     /**
@@ -42,42 +45,78 @@ class PostReplayCommentCtrl extends Controller
         //
 
          $validator = Validator::make($request->all(), [
-             'post_id' => 'required|numeric',
+             'comment_id' => 'required|numeric',
              'content' => 'string',
+             'comment_image'=>'file'
 
          ]);
 
+
+
         if ($validator->fails()) {
-           return array(
-             'code'=>500,
-             'message'=>'error validation data request',
-             'data'=>$validator->messages(),
+             return array(
+               'code'=>500,
+               'message'=>'error validation data request',
+               'data'=>$validator->messages(),
            );
+         }
+
+
+         if($request->file('comment_image')OR($request->content)){
+
+            $comment=ReplayCommentPost::create([
+                'post_comment_id'=>$request->comment_id,
+                'content'=>$request->content,
+                'user_id'=>Auth::user()->id,
+             
+            ]);
+            if($request->file('comment_image')){
+
+                $file=$request->file('comment_image');
+               $time=substr(md5(Auth::user()->id), 0, 5).substr(md5(rand(0, 666)), 0, 3).'-'.rand(0, 1000).'-'.rand(0, 100000);
+               $extension = $file->getClientOriginalExtension();
+               $fileName=$comment->id.'-'.$time.'.'.$extension;
+               $file=$file->storeAs('public/posts/comment/replay',$fileName);
+               $urlPublic= Storage::url($file);
+
+               if($urlPublic){
+                    $comment->image_url=$urlPublic;
+                    $comment->thumbnail=$urlPublic;
+                    $comment->save();
+                }
+
+            }
+
+            if($comment){
+                return array(
+                    'code'=>200,
+                    'data'=>ReplayCommentPost::where('id',$comment->id)->with('FromUser')->first(),
+                    'message'=>"success add comment"
+                );
+
+            }else{
+                return array(
+                    'code'=>500,
+                    'data'=>null,
+                    'message'=>"can't add comment"
+                );
+
+            }
+
+
+
         }
-
-        $comment=PostComments::create([
-            'post_id'=>$request->$post_id,
-            'content'=>$request->content,
-            'user_id'=>Auth::user()->id,
-            'status'=>1
-
-        ]);
-
-        if($comment){
-            return array(
-                'code'=>200,
-                'data'=>PostComments::where('id',$comment->id)->with('FromUser')->first(),
-                'message'=>"success add comment"
-            );
-
-        }else{
+        else{
             return array(
                 'code'=>500,
-                'data'=>$comment->with('FromUser'),
+                'data'=>null,
                 'message'=>"can't add comment"
             );
 
         }
+
+
+        
 
 
 

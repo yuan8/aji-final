@@ -14,7 +14,8 @@ class ReplayCommentPost extends Model
     	'id',
     	'user_id',
     	'post_comment_id',
-    	'file',
+    	'image_url',
+        'thumbnail',
     	'content',
     	'created_at',
     	'updated_at'

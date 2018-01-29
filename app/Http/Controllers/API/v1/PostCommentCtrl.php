@@ -45,6 +45,7 @@ class PostCommentCtrl extends Controller
         $validator = Validator::make($request->all(), [
            'content' => 'string',
            'post_id' => 'required|numeric',
+           'comment_image'=>'file'
 
        ]);
 

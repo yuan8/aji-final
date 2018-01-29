@@ -78,6 +78,10 @@ class ComposerStaticInit209a0d4f68499505300372bbea11e691
             'Intervention\\Image\\' => 19,
             'Illuminate\\' => 11,
         ),
+        'H' => 
+        array (
+            'HighIdeas\\UsersOnline\\' => 22,
+        ),
         'G' => 
         array (
             'GuzzleHttp\\Psr7\\' => 16,
@@ -218,6 +222,10 @@ class ComposerStaticInit209a0d4f68499505300372bbea11e691
         array (
             0 => __DIR__ . '/..' . '/laravel/framework/src/Illuminate',
         ),
+        'HighIdeas\\UsersOnline\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/highideas/laravel-users-online/src',
+        ),
         'GuzzleHttp\\Psr7\\' => 
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/psr7/src',
@@ -297,8 +305,20 @@ class ComposerStaticInit209a0d4f68499505300372bbea11e691
         'App\\Event' => __DIR__ . '/../..' . '/app/Event.php',
         'App\\EventReservation' => __DIR__ . '/../..' . '/app/EventReservation.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\Http\\Controllers\\API\\v1\\AccessCtrl' => __DIR__ . '/../..' . '/app/Http/Controllers/API/v1/AccessCtrl.php',
+        'App\\Http\\Controllers\\API\\v1\\CityCtrl' => __DIR__ . '/../..' . '/app/Http/Controllers/API/v1/CityCtrl.php',
+        'App\\Http\\Controllers\\API\\v1\\EventReservationCtrl' => __DIR__ . '/../..' . '/app/Http/Controllers/API/v1/EventReservationCtrl.php',
+        'App\\Http\\Controllers\\API\\v1\\MyPostCtrl' => __DIR__ . '/../..' . '/app/Http/Controllers/API/v1/MyPostCtrl.php',
         'App\\Http\\Controllers\\API\\v1\\PostController' => __DIR__ . '/../..' . '/app/Http/Controllers/API/v1/PostController.php',
         'App\\Http\\Controllers\\API\\v1\\SettingAboutController' => __DIR__ . '/../..' . '/app/Http/Controllers/API/v1/SettingAboutController.php',
+        'App\\Http\\Controllers\\Api\\v1\\EventCtrl' => __DIR__ . '/../..' . '/app/Http/Controllers/API/v1/EventCtrl.php',
+        'App\\Http\\Controllers\\Api\\v1\\PostCommentCtrl' => __DIR__ . '/../..' . '/app/Http/Controllers/API/v1/PostCommentCtrl.php',
+        'App\\Http\\Controllers\\Api\\v1\\PostCommentLikeCtrl' => __DIR__ . '/../..' . '/app/Http/Controllers/API/v1/PostCommentLikeCtrl.php',
+        'App\\Http\\Controllers\\Api\\v1\\PostCtrl' => __DIR__ . '/../..' . '/app/Http/Controllers/API/v1/PostCtrl.php',
+        'App\\Http\\Controllers\\Api\\v1\\PostLikeCtrl' => __DIR__ . '/../..' . '/app/Http/Controllers/API/v1/PostLikeCtrl.php',
+        'App\\Http\\Controllers\\Api\\v1\\PostPictureCtrl' => __DIR__ . '/../..' . '/app/Http/Controllers/API/v1/PostPictureCtrl.php',
+        'App\\Http\\Controllers\\Api\\v1\\PostReplayCommentCtrl' => __DIR__ . '/../..' . '/app/Http/Controllers/API/v1/PostReplayCommentCtrl.php',
+        'App\\Http\\Controllers\\Api\\v1\\UserCtrl' => __DIR__ . '/../..' . '/app/Http/Controllers/API/v1/UserCtrl.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
         'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',
@@ -317,6 +337,7 @@ class ComposerStaticInit209a0d4f68499505300372bbea11e691
         'App\\Http\\Controllers\\PostLikesController' => __DIR__ . '/../..' . '/app/Http/Controllers/PostLikesController.php',
         'App\\Http\\Controllers\\PostTagsController' => __DIR__ . '/../..' . '/app/Http/Controllers/PostTagsController.php',
         'App\\Http\\Controllers\\PostsController' => __DIR__ . '/../..' . '/app/Http/Controllers/PostsController.php',
+        'App\\Http\\Controllers\\ReplayCommentPostController' => __DIR__ . '/../..' . '/app/Http/Controllers/ReplayCommentPostController.php',
         'App\\Http\\Controllers\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserController.php',
         'App\\Http\\Controllers\\UserPictureController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserPictureController.php',
         'App\\Http\\Controllers\\pages\\ProfileController' => __DIR__ . '/../..' . '/app/Http/Controllers/Pages/ProfileController.php',
@@ -338,6 +359,7 @@ class ComposerStaticInit209a0d4f68499505300372bbea11e691
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
         'App\\Providers\\TimeProvider' => __DIR__ . '/../..' . '/app/Providers/TimeProvider.php',
+        'App\\ReplayCommentPost' => __DIR__ . '/../..' . '/app/ReplayCommentPost.php',
         'App\\SettingAbout' => __DIR__ . '/../..' . '/app/SettingAbout.php',
         'App\\TestMODEL' => __DIR__ . '/../..' . '/app/TestMODEL.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
@@ -913,6 +935,11 @@ class ComposerStaticInit209a0d4f68499505300372bbea11e691
         'Hamcrest\\Type\\IsString' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Type/IsString.php',
         'Hamcrest\\Util' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Util.php',
         'Hamcrest\\Xml\\HasXPath' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Xml/HasXPath.php',
+        'HighIdeas\\UsersOnline\\Listeners\\LogoutListener' => __DIR__ . '/..' . '/highideas/laravel-users-online/src/Listeners/LogoutListener.php',
+        'HighIdeas\\UsersOnline\\Middleware\\UsersOnline' => __DIR__ . '/..' . '/highideas/laravel-users-online/src/Middleware/UsersOnline.php',
+        'HighIdeas\\UsersOnline\\Providers\\UsersOnlineEventServiceProvider' => __DIR__ . '/..' . '/highideas/laravel-users-online/src/Providers/UsersOnlineEventServiceProvider.php',
+        'HighIdeas\\UsersOnline\\Traits\\UsersOnlineTrait' => __DIR__ . '/..' . '/highideas/laravel-users-online/src/Traits/UsersOnlineTrait.php',
+        'HighIdeas\\UsersOnline\\UsersOnlineServiceProvider' => __DIR__ . '/..' . '/highideas/laravel-users-online/src/UsersOnlineServiceProvider.php',
         'Illuminate\\Auth\\Access\\AuthorizationException' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Auth/Access/AuthorizationException.php',
         'Illuminate\\Auth\\Access\\Gate' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Auth/Access/Gate.php',
         'Illuminate\\Auth\\Access\\HandlesAuthorization' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Auth/Access/HandlesAuthorization.php',
